@@ -30,7 +30,7 @@ class _PageDataDiriState extends State<PageDataDiri> {
   var kota = ["Purbalingga", "Purwokerto", "Kebumen"];
   var kecamatan = ["Bojongsari", "Kutasari", "Padamara"];
   var kelurahan = ["Candiwulan", "Karangcegak", "Candinata"];
-  var rt = ["01", "02", "03", "04", "05"];
+  var rt = ["01", "02", "03", "04", "05","06", "07", "08", "09", "10"];
   var rw = ["001", "002", "003", "004", "005"];
 
   String jenisKelamin = "";
@@ -869,10 +869,6 @@ class _PageDataDiriState extends State<PageDataDiri> {
                     fillColor: ColorPalette.gray300,
                     filled: true,
                   ),
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(context),
-                    FormBuilderValidators.maxLength(context, 25),
-                  ]),
                 ),
               ],
             ),
@@ -913,8 +909,6 @@ class _PageDataDiriState extends State<PageDataDiri> {
                   ),
                   allowClear: true,
                   hint: Text('Select Provinsi'),
-                  validator: FormBuilderValidators.compose(
-                      [FormBuilderValidators.required(context)]),
                   items: provinsi
                       .map((provinsi) => DropdownMenuItem(
                             value: provinsi,
@@ -961,8 +955,6 @@ class _PageDataDiriState extends State<PageDataDiri> {
                   ),
                   allowClear: true,
                   hint: Text('Select Kota/Kabupaten'),
-                  validator: FormBuilderValidators.compose(
-                      [FormBuilderValidators.required(context)]),
                   items: kota
                       .map((kota) => DropdownMenuItem(
                             value: kota,
@@ -1009,8 +1001,6 @@ class _PageDataDiriState extends State<PageDataDiri> {
                   ),
                   allowClear: true,
                   hint: Text('Select kecamatan'),
-                  validator: FormBuilderValidators.compose(
-                      [FormBuilderValidators.required(context)]),
                   items: kecamatan
                       .map((kecamatan) => DropdownMenuItem(
                             value: kecamatan,
@@ -1057,8 +1047,6 @@ class _PageDataDiriState extends State<PageDataDiri> {
                   ),
                   allowClear: true,
                   hint: Text('Select Kelurahan/Desa'),
-                  validator: FormBuilderValidators.compose(
-                      [FormBuilderValidators.required(context)]),
                   items: kelurahan
                       .map((kelurahan) => DropdownMenuItem(
                             value: kelurahan,
@@ -1105,8 +1093,6 @@ class _PageDataDiriState extends State<PageDataDiri> {
                     ),
                     allowClear: true,
                     hint: Text('Select RT'),
-                    validator: FormBuilderValidators.compose(
-                        [FormBuilderValidators.required(context)]),
                     items: rt
                         .map((rt) => DropdownMenuItem(
                               value: rt,
@@ -1150,8 +1136,6 @@ class _PageDataDiriState extends State<PageDataDiri> {
                     ),
                     allowClear: true,
                     hint: Text('Select RW'),
-                    validator: FormBuilderValidators.compose(
-                        [FormBuilderValidators.required(context)]),
                     items: rw
                         .map((rw) => DropdownMenuItem(
                               value: rw,
@@ -1204,30 +1188,33 @@ class _PageDataDiriState extends State<PageDataDiri> {
                 shadowColor: MaterialStateProperty.all(Colors.transparent),
               ),
               onPressed: () {
-                BlocProvider.of<DashboardBloc>(context).add(
-                  SaveDashboard(
-                    data: DataDiri(
-                        name: _namaController.text,
-                        tempat: _tempatController.text,
-                        jalan: _getJalanController.text,
-                        jenisKelamin: jenisKelamin,
-                        tanggalLahir: tglController.text,
-                        provinsiKtp: provinsiPertama,
-                        kabupatenKtp: kotaPertama,
-                        kecamatanKtp: kecamatanPertama,
-                        desaKtp: kelurahanPertama,
-                        rtKtp: rtPertama,
-                        rwKtp: rwPertama,
-                        provinsiRumah: getProvinsi.toString(),
-                        kabupatenRumah: getKota.toString(),
-                        kecamatanRumah: getKecamatan.toString(),
-                        desaRumah: getKelurahan.toString(),
-                        rtRumah: getRt.toString(),
-                        rwRumah: getRw.toString()
-
-                        ),
-                  ),
-                );
+                if (_formKey.currentState!.validate()) {
+                  BlocProvider.of<DashboardBloc>(context).add(
+                    SaveDashboard(
+                      data: DataDiri(
+                          name: _namaController.text,
+                          tempat: _tempatController.text,
+                          jalan: _getJalanController.text,
+                          jenisKelamin: jenisKelamin,
+                          tanggalLahir: tglController.text,
+                          provinsiKtp: provinsiPertama,
+                          kabupatenKtp: kotaPertama,
+                          kecamatanKtp: kecamatanPertama,
+                          desaKtp: kelurahanPertama,
+                          rtKtp: rtPertama,
+                          rwKtp: rwPertama,
+                          provinsiRumah: getProvinsi.toString(),
+                          kabupatenRumah: getKota.toString(),
+                          kecamatanRumah: getKecamatan.toString(),
+                          desaRumah: getKelurahan.toString(),
+                          rtRumah: getRt.toString(),
+                          rwRumah: getRw.toString()),
+                    ),
+                  );
+                } else {
+                  Scaffold.of(context)
+          .showSnackBar(SnackBar(content: Text('Not valid!')));
+                }
               },
               child: Text(
                 StringResources.BTN_SEND_APP_TITLE,
