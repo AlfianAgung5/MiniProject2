@@ -98,87 +98,271 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
-                                IconButton(
-                                    onPressed: () {
-                                      print(index);
-                                      showDialog(
-                                          context: context,
-                                          builder: (_) {
-                                            return Dialog(
-                                              child: Container(
-                                                padding: EdgeInsets.all(32),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Text("Alamat Data Diri "),
-                                                    Divider(),
-                                                    Text("Nama : " +
-                                                        currentDataDiri.name),
-                                                    Text("Jenis Kelamin : " +
-                                                        currentDataDiri
-                                                            .jenisKelamin),
-                                                    Text("Tempat : " +
-                                                        currentDataDiri.tempat),
-                                                    Text("Tanggal Lahir :" +
-                                                        currentDataDiri
-                                                            .tanggalLahir
-                                                            .toString()),
-                                                    Text(""),
-                                                    Text("Alamat KTP "),
-                                                    Divider(),
-                                                    Text("Jalan : " +
-                                                        currentDataDiri.jalan),
-                                                    Text("Provinsi : " +
-                                                        currentDataDiri
-                                                            .provinsiKtp),
-                                                    Text("Kota/kabupaten : " +
-                                                        currentDataDiri
-                                                            .kabupatenKtp),
-                                                    Text("Kecamatan : " +
-                                                        currentDataDiri
-                                                            .kecamatanKtp),
-                                                    Text("Kelurahan/Desa : " +
-                                                        currentDataDiri
-                                                            .desaKtp),
-                                                    Text("RT : " +
-                                                        currentDataDiri.rtKtp),
-                                                    Text("Rw : " +
-                                                        currentDataDiri.rwKtp),
-                                                    Text(""),
-                                                    Text(
-                                                        "Alamat Tempat Tinggal "),
-                                                    Divider(),
-                                                    Text("Jalan : " +
-                                                        currentDataDiri
-                                                            .jalanRumah),
-                                                    Text("Provinsi : " +
-                                                        currentDataDiri
-                                                            .provinsiRumah),
-                                                    Text("Kota/kabupaten : " +
-                                                        currentDataDiri
-                                                            .kabupatenRumah),
-                                                    Text("Kecamatan : " +
-                                                        currentDataDiri
-                                                            .kecamatanRumah),
-                                                    Text("Kelurahan/Desa : " +
-                                                        currentDataDiri
-                                                            .desaRumah),
-                                                    Text("RT : " +
-                                                        currentDataDiri
-                                                            .rtRumah),
-                                                    Text("Rw : " +
-                                                        currentDataDiri
-                                                            .rwRumah),
-                                                  ],
+                                PopupMenuButton(
+                                    itemBuilder: (context) => [
+                                          PopupMenuItem(
+                                              child: Row(
+                                            children: [
+                                              IconButton(
+                                                  onPressed: () {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (_) {
+                                                          return Dialog(
+                                                            child: Container(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(32),
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                children: [
+                                                                  Text(
+                                                                      "Alamat Data Diri "),
+                                                                  Divider(),
+                                                                  Text("Nama : " +
+                                                                      currentDataDiri
+                                                                          .name),
+                                                                  Text("Jenis Kelamin : " +
+                                                                      currentDataDiri
+                                                                          .jenisKelamin),
+                                                                  Text("Tempat : " +
+                                                                      currentDataDiri
+                                                                          .tempat),
+                                                                  Text("Tanggal Lahir :" +
+                                                                      currentDataDiri
+                                                                          .tanggalLahir
+                                                                          .toString()),
+                                                                  Text(""),
+                                                                  Text(
+                                                                      "Alamat KTP "),
+                                                                  Divider(),
+                                                                  Text("Jalan : " +
+                                                                      currentDataDiri
+                                                                          .jalan),
+                                                                  Text("Provinsi : " +
+                                                                      currentDataDiri
+                                                                          .provinsiKtp),
+                                                                  Text("Kota/kabupaten : " +
+                                                                      currentDataDiri
+                                                                          .kabupatenKtp),
+                                                                  Text("Kecamatan : " +
+                                                                      currentDataDiri
+                                                                          .kecamatanKtp),
+                                                                  Text("Kelurahan/Desa : " +
+                                                                      currentDataDiri
+                                                                          .desaKtp),
+                                                                  Text("RT : " +
+                                                                      currentDataDiri
+                                                                          .rtKtp),
+                                                                  Text("Rw : " +
+                                                                      currentDataDiri
+                                                                          .rwKtp),
+                                                                  Text(""),
+                                                                  Text(
+                                                                      "Alamat Tempat Tinggal "),
+                                                                  Divider(),
+                                                                  Text("Jalan : " +
+                                                                      currentDataDiri
+                                                                          .jalanRumah),
+                                                                  Text("Provinsi : " +
+                                                                      currentDataDiri
+                                                                          .provinsiRumah),
+                                                                  Text("Kota/kabupaten : " +
+                                                                      currentDataDiri
+                                                                          .kabupatenRumah),
+                                                                  Text("Kecamatan : " +
+                                                                      currentDataDiri
+                                                                          .kecamatanRumah),
+                                                                  Text("Kelurahan/Desa : " +
+                                                                      currentDataDiri
+                                                                          .desaRumah),
+                                                                  Text("RT : " +
+                                                                      currentDataDiri
+                                                                          .rtRumah),
+                                                                  Text("Rw : " +
+                                                                      currentDataDiri
+                                                                          .rwRumah),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          );
+                                                        });
+                                                  },
+                                                  icon:
+                                                      Icon(Icons.info_outline)),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 8.0),
+                                                child: TextButton(
+                                                  onPressed: () {},
+                                                  child: Text('Detail'),
                                                 ),
-                                              ),
-                                            );
-                                          });
-                                    },
-                                    icon: Icon(Icons.more_vert)),
+                                              )
+                                            ],
+                                          )),
+                                          PopupMenuItem(
+                                              child: Row(
+                                            children: [
+                                              IconButton(
+                                                  onPressed: () {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (_) {
+                                                          return Dialog(
+                                                            child: Container(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(32),
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                children: [
+                                                                  Text(
+                                                                      "Alamat Data Diri "),
+                                                                  Divider(),
+                                                                  Text("Nama : " +
+                                                                      currentDataDiri
+                                                                          .name),
+                                                                  Text("Jenis Kelamin : " +
+                                                                      currentDataDiri
+                                                                          .jenisKelamin),
+                                                                  Text("Tempat : " +
+                                                                      currentDataDiri
+                                                                          .tempat),
+                                                                  Text("Tanggal Lahir :" +
+                                                                      currentDataDiri
+                                                                          .tanggalLahir
+                                                                          .toString()),
+                                                                  Text(""),
+                                                                  Text(
+                                                                      "Alamat KTP "),
+                                                                  Divider(),
+                                                                  Text("Jalan : " +
+                                                                      currentDataDiri
+                                                                          .jalan),
+                                                                  Text("Provinsi : " +
+                                                                      currentDataDiri
+                                                                          .provinsiKtp),
+                                                                  Text("Kota/kabupaten : " +
+                                                                      currentDataDiri
+                                                                          .kabupatenKtp),
+                                                                  Text("Kecamatan : " +
+                                                                      currentDataDiri
+                                                                          .kecamatanKtp),
+                                                                  Text("Kelurahan/Desa : " +
+                                                                      currentDataDiri
+                                                                          .desaKtp),
+                                                                  Text("RT : " +
+                                                                      currentDataDiri
+                                                                          .rtKtp),
+                                                                  Text("Rw : " +
+                                                                      currentDataDiri
+                                                                          .rwKtp),
+                                                                  Text(""),
+                                                                  Text(
+                                                                      "Alamat Tempat Tinggal "),
+                                                                  Divider(),
+                                                                  Text("Jalan : " +
+                                                                      currentDataDiri
+                                                                          .jalanRumah),
+                                                                  Text("Provinsi : " +
+                                                                      currentDataDiri
+                                                                          .provinsiRumah),
+                                                                  Text("Kota/kabupaten : " +
+                                                                      currentDataDiri
+                                                                          .kabupatenRumah),
+                                                                  Text("Kecamatan : " +
+                                                                      currentDataDiri
+                                                                          .kecamatanRumah),
+                                                                  Text("Kelurahan/Desa : " +
+                                                                      currentDataDiri
+                                                                          .desaRumah),
+                                                                  Text("RT : " +
+                                                                      currentDataDiri
+                                                                          .rtRumah),
+                                                                  Text("Rw : " +
+                                                                      currentDataDiri
+                                                                          .rwRumah),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          );
+                                                        });
+                                                  },
+                                                  icon: Icon(
+                                                      Icons.edit_outlined)),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 8.0),
+                                                child: Text('Edit'),
+                                              )
+                                            ],
+                                          )),
+                                          PopupMenuItem(
+                                              child: Row(
+                                            children: [
+                                              IconButton(
+                                                  onPressed: () {
+                                                    Alert(
+                                                      context: context,
+                                                      type: AlertType.warning,
+                                                      title: "DELETE DATA",
+                                                      desc:
+                                                          "Apa anda yakin menghapus data.",
+                                                      buttons: [
+                                                        DialogButton(
+                                                            child: Text(
+                                                              "Delete",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 20),
+                                                            ),
+                                                            onPressed: () {
+                                                              box.deleteAt(
+                                                                  index);
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            color: ColorPalette
+                                                                .main),
+                                                        DialogButton(
+                                                            child: Text(
+                                                              "Cancel",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 20),
+                                                            ),
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    context),
+                                                            color: ColorPalette
+                                                                .main)
+                                                      ],
+                                                    ).show();
+                                                  },
+                                                  icon: Icon(
+                                                      Icons.delete_outline)),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 8.0),
+                                                child: Text('delete'),
+                                              )
+                                            ],
+                                          ))
+                                        ]),
+
+                                // icon: Icon(Icons.more_vert)),
                                 IconButton(
                                     onPressed: () {
                                       Alert(
